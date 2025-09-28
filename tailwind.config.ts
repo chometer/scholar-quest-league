@@ -54,6 +54,12 @@ export default {
           xp: "hsl(var(--gaming-xp))",
           level: "hsl(var(--gaming-level))",
         },
+        eco: {
+          forest: "hsl(142 76% 36%)",
+          leaf: "hsl(88 50% 53%)",
+          ocean: "hsl(164 83% 25%)",
+          earth: "hsl(30 67% 55%)",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

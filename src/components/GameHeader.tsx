@@ -1,43 +1,58 @@
-import { Trophy, Zap, Target } from "lucide-react";
+import { Leaf, Trophy, GamepadIcon, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const GameHeader = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const navItems = [
+    { path: '/', label: 'Home', icon: Leaf },
+    { path: '/games', label: 'Games', icon: GamepadIcon },
+    { path: '/quizzes', label: 'Quizzes', icon: BookOpen },
+    { path: '/leaderboards', label: 'Leaderboards', icon: Trophy },
+  ];
+
   return (
-    <header className="relative overflow-hidden bg-gradient-to-br from-background to-background/80 py-20">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.1),transparent_70%)]" />
-      
-      <div className="container mx-auto px-4 text-center relative z-10">
-        <div className="flex items-center justify-center mb-6">
-          <div className="p-4 rounded-full bg-primary/20 mr-4">
-            <Trophy className="w-12 h-12 text-primary" />
+    <header className="bg-card border-b border-border">
+      <div className="container mx-auto px-4 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-eco-forest to-eco-leaf rounded-lg flex items-center justify-center">
+              <Leaf className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-eco-forest to-eco-leaf bg-clip-text text-transparent">
+                EcoQuest Academy
+              </h1>
+              <p className="text-sm text-muted-foreground">Learn, Play, Save the Planet</p>
+            </div>
           </div>
-          <h1 className="text-6xl font-bold gradient-text">
-            AcademyQuest
-          </h1>
+          
+          <nav className="flex items-center space-x-2">
+            {navItems.map((item) => {
+              const IconComponent = item.icon;
+              const isActive = location.pathname === item.path;
+              
+              return (
+                <Button
+                  key={item.path}
+                  variant={isActive ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => navigate(item.path)}
+                  className={`flex items-center space-x-2 ${
+                    isActive 
+                      ? "bg-gradient-to-r from-eco-forest to-eco-leaf text-white" 
+                      : "hover:bg-eco-forest/10"
+                  }`}
+                >
+                  <IconComponent className="w-4 h-4" />
+                  <span className="hidden sm:inline">{item.label}</span>
+                </Button>
+              );
+            })}
+          </nav>
         </div>
-        
-        <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Transform your learning journey into an epic adventure. Compete, achieve, and level up your academic skills!
-        </p>
-        
-        <div className="flex items-center justify-center space-x-8 mb-8">
-          <div className="flex items-center space-x-2">
-            <Zap className="w-5 h-5 text-gaming-xp" />
-            <span className="text-sm font-medium">Earn XP</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Trophy className="w-5 h-5 text-gaming-gold" />
-            <span className="text-sm font-medium">Unlock Badges</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Target className="w-5 h-5 text-primary" />
-            <span className="text-sm font-medium">Climb Leaderboards</span>
-          </div>
-        </div>
-        
-        <Button size="lg" className="gaming-button text-lg px-8 py-3">
-          Start Your Quest
-        </Button>
       </div>
     </header>
   );
