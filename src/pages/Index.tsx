@@ -16,7 +16,7 @@ const Index = () => {
       <main className="container mx-auto px-4 py-8">
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-eco-forest to-eco-leaf bg-clip-text text-transparent">
-            Welcome to EcoQuest Academy
+            Welcome to EcoShaala
           </h1>
           <p className="text-xl text-muted-foreground mb-8">
             Learn, compete, and make a difference for our planet
