@@ -2,32 +2,37 @@ import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { Calculator, Beaker, BookOpen, Globe, Palette, Music, Code, Brain } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const SubjectCards = () => {
+  const navigate = useNavigate();
   const subjects = [
     {
       id: 1,
       name: "Mathematics",
+      key: "mathematics",
       icon: Calculator,
       progress: 75,
       level: 8,
       nextReward: "Calculus Master Badge",
-      color: "from-blue-500/20 to-blue-600/20 border-blue-500/30",
-      iconColor: "text-blue-400"
+      color: "from-eco-forest/20 to-eco-leaf/20 border-eco-forest/30",
+      iconColor: "text-eco-forest"
     },
     {
       id: 2,
       name: "Science",
+      key: "science",
       icon: Beaker,
       progress: 60,
       level: 6,
       nextReward: "Chemistry Expert Badge",
-      color: "from-green-500/20 to-green-600/20 border-green-500/30",
-      iconColor: "text-green-400"
+      color: "from-eco-ocean/20 to-eco-leaf/20 border-eco-ocean/30",
+      iconColor: "text-eco-ocean"
     },
     {
       id: 3,
       name: "Literature",
+      key: "literature",
       icon: BookOpen,
       progress: 45,
       level: 5,
@@ -38,6 +43,7 @@ const SubjectCards = () => {
     {
       id: 4,
       name: "History",
+      key: "history",
       icon: Globe,
       progress: 80,
       level: 9,
@@ -48,6 +54,7 @@ const SubjectCards = () => {
     {
       id: 5,
       name: "Art",
+      key: "art",
       icon: Palette,
       progress: 30,
       level: 3,
@@ -58,6 +65,7 @@ const SubjectCards = () => {
     {
       id: 6,
       name: "Programming",
+      key: "programming",
       icon: Code,
       progress: 90,
       level: 12,
@@ -104,8 +112,11 @@ const SubjectCards = () => {
                     <p className="text-sm font-medium">{subject.nextReward}</p>
                   </div>
                   
-                  <Button className="w-full gaming-button">
-                    Continue Learning
+                  <Button 
+                    className="w-full gaming-button"
+                    onClick={() => navigate(`/quiz/${subject.key}`)}
+                  >
+                    Start Quiz (20 Questions)
                   </Button>
                 </div>
               </div>

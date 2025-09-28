@@ -1,4 +1,4 @@
-import { Leaf, Trophy, GamepadIcon, BookOpen } from "lucide-react";
+import { Leaf, Trophy, GamepadIcon, BookOpen, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -11,6 +11,7 @@ const GameHeader = () => {
     { path: '/games', label: 'Games', icon: GamepadIcon },
     { path: '/quizzes', label: 'Quizzes', icon: BookOpen },
     { path: '/leaderboards', label: 'Leaderboards', icon: Trophy },
+    { path: '/badges', label: 'Badges', icon: Award },
   ];
 
   return (
